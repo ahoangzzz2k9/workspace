@@ -1,0 +1,27 @@
+{
+  "name": "cunglam",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "description": "Cùng Làm — nền tảng kết nối người có ý tưởng với người muốn tích lũy kinh nghiệm thực chiến qua dự án.",
+  "license": "MIT",
+  "author": "Cùng Làm contributors",
+  "keywords": [
+    "vietnam",
+    "students",
+    "projects",
+    "pwa",
+    "sqlite",
+    "nodejs"
+  ],
+  "engines": {
+    "node": ">=22.5"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "seed": "node src/seed.js",
+    "test": "node test/run.js",
+    "check": "node --check server.js"
+  }
+}
