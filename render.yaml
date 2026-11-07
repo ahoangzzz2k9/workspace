@@ -1,0 +1,28 @@
+# Blueprint Render.
+# Mặc định: plan FREE — chạy được ngay, không cần thẻ, nhưng ổ đĩa tạm:
+#   dữ liệu sẽ mất khi deploy lại / service ngủ đông rồi thức dậy.
+# Muốn giữ dữ liệu: đổi plan thành "starter" và bỏ dấu # ở khối disk bên dưới.
+services:
+  - type: web
+    name: cunglam
+    runtime: docker
+    plan: free
+    region: singapore
+    healthCheckPath: /health
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: "10000"
+      - key: CUNGLAM_DB
+        value: /app/data/cunglam.db
+      - key: CUNGLAM_SEED
+        value: "1"
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: TRUST_PROXY
+        value: "1"
+    # disk:
+    #   name: cunglam-data
+    #   mountPath: /app/data
+    #   sizeGB: 1
