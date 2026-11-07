@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cùng Làm — Mạng xã hội dự án cho sinh viên</title>
+<meta name="description" content="Nền tảng kết nối người có ý tưởng với người muốn tích luỹ kinh nghiệm thực chiến qua dự án thật.">
+<link rel="icon" href="public/icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="public/icons/apple-touch-icon-180.png">
+<meta property="og:title" content="Cùng Làm — Ý tưởng gặp người thực thi">
+<meta property="og:description" content="Mạng xã hội lấy dự án làm trung tâm: tạo dự án, ghép team, theo dõi tiến độ, ghi nhận đóng góp.">
+<meta property="og:image" content="docs/screenshots/landing.png">
+<meta name="theme-color" content="#0f766e">
+<style>
+  :root {
+    --bg: #f5f7f8; --surface: #fff; --ink: #0c1a26; --ink-soft: #24384a;
+    --muted: #5d6f80; --line: #e2e8ee; --brand: #0f766e; --brand-strong: #0b5d56;
+    --brand-soft: #e7f4f1; --accent: #d97706; --radius: 16px;
+    --shadow: 0 1px 2px rgba(12,26,38,.04), 0 10px 30px -18px rgba(12,26,38,.25);
+    --max: 1120px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font-family: ui-sans-serif, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { margin: 0 0 .4em; line-height: 1.2; letter-spacing: -.02em; }
+  h1 { font-size: clamp(2rem, 4.4vw, 3.1rem); }
+  h2 { font-size: 1.35rem; }
+  h3 { font-size: 1rem; }
+  p { margin: 0 0 .9em; }
+  a { color: var(--brand-strong); }
+  img { max-width: 100%; display: block; }
+  .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+  .banner { background: #fffbeb; border-bottom: 1px solid #f0e0b6; color: #7a5606;
+    font-size: .84rem; padding: 8px 20px; text-align: center; }
+  header { background: rgba(255,255,255,.9); border-bottom: 1px solid var(--line);
+    position: sticky; top: 0; z-index: 10; backdrop-filter: blur(10px); }
+  .head { display: flex; align-items: center; gap: 16px; height: 62px; }
+  .brand { display: inline-flex; align-items: center; gap: 9px; color: var(--ink);
+    font-size: 1.15rem; text-decoration: none; }
+  .brand svg { color: var(--brand); }
+  .brand strong { color: var(--brand); }
+  .head nav { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+    padding: 10px 16px; border-radius: 10px; border: 1px solid #cbd6e0; background: #fff;
+    color: var(--ink); font: inherit; font-size: .92rem; font-weight: 580; text-decoration: none; }
+  .btn:hover { background: #f3f6f7; }
+  .btn-primary { background: var(--brand); border-color: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-strong); }
+  .btn-sm { padding: 7px 12px; font-size: .85rem; }
+  .hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 36px; align-items: center; padding: 46px 0 30px; }
+  .eyebrow { text-transform: uppercase; letter-spacing: .13em; font-size: .72rem;
+    font-weight: 700; color: var(--brand); margin-bottom: 10px; }
+  .lead { font-size: 1.06rem; color: var(--muted); max-width: 60ch; }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 22px 0 10px; }
+  .note { font-size: .82rem; color: var(--muted); max-width: 60ch; }
+  .shot { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 8px;
+    box-shadow: var(--shadow); }
+  .shot img { border-radius: 10px; }
+  .shot figcaption { font-size: .76rem; color: var(--muted); padding: 8px 6px 2px; }
+  .section { padding: 40px 0; }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; list-style: none; padding: 0; margin: 0; }
+  .steps li { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+  .num { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 9px;
+    background: var(--brand-soft); color: var(--brand-strong); font-weight: 700; margin-bottom: 10px; }
+  .steps p { font-size: .86rem; color: var(--muted); margin: 0; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 10px 0 0; }
+  .chip { border: 1px solid #e4eaee; background: #f1f5f6; border-radius: 999px;
+    padding: 4px 10px; font-size: .8rem; color: var(--ink-soft); }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
+  .two-col { display: grid; grid-template-columns: 1.2fr .8fr; gap: 22px; align-items: start; }
+  .list { margin: 0; padding-left: 20px; color: var(--ink-soft); font-size: .93rem; }
+  .list li { margin-bottom: 6px; }
+  footer { border-top: 1px solid var(--line); background: #fbfcfc; margin-top: 30px; }
+  .foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 22px 20px; font-size: .84rem; color: var(--muted); }
+  code { background: #eef2f4; border-radius: 5px; padding: 1px 5px; font-size: .88em; }
+  @media (max-width: 900px) {
+    .hero, .two-col { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .hero { padding-top: 28px; }
+  }
+  @media (max-width: 560px) {
+    .steps, .grid-2 { grid-template-columns: 1fr; }
+    .head nav .btn span { display: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="banner">
+    Đây là trang giới thiệu tĩnh trên GitHub Pages. Ứng dụng đầy đủ (đăng nhập, dữ liệu) chạy bằng Node.js + SQLite —
+    <a href="https://github.com/ahoangzzz2k9/workspace/blob/main/docs/DEPLOY.md">xem cách deploy</a>.
+  </div>
+
+  <header>
+    <div class="wrap head">
+      <a class="brand" href="./">
+        <svg viewBox="0 0 32 32" width="30" height="30" fill="none" aria-hidden="true">
+          <rect x="2.5" y="2.5" width="27" height="27" rx="9" fill="currentColor" opacity=".12"/>
+          <path d="M10 21V13.5C10 11.6 11.6 10 13.5 10S17 11.6 17 13.5V21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M17 17.5c0-1.9 1.6-3.5 3.5-3.5S24 15.6 24 17.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <span>Cùng<strong>Làm</strong></span>
+      </a>
+      <nav>
+        <a class="btn btn-sm" href="https://github.com/ahoangzzz2k9/workspace">Mã nguồn</a>
+        <a class="btn btn-sm" href="https://github.com/ahoangzzz2k9/workspace/blob/main/README.md">README</a>
+        <a class="btn btn-sm btn-primary" href="https://github.com/ahoangzzz2k9/workspace/blob/main/docs/DEPLOY.md">Chạy thử</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Mạng xã hội lấy dự án làm trung tâm</p>
+        <h1>Ý tưởng cần người.<br>Kinh nghiệm cần dự án.</h1>
+        <p class="lead">Cùng Làm nối người có ý tưởng nhưng thiếu team với người có kỹ năng nhưng thiếu kinh nghiệm thực chiến — qua dự án làm thật, có tiến độ, có thoả thuận, có bằng chứng đóng góp.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://github.com/ahoangzzz2k9/workspace/blob/main/README.md">Đọc hướng dẫn</a>
+          <a class="btn" href="https://github.com/ahoangzzz2k9/workspace">Xem mã nguồn</a>
+        </div>
+        <p class="note">Bản đầy đủ cần chạy <code>node server.js</code> hoặc Docker. GitHub Pages chỉ hiển thị trang này.</p>
+        <div class="chips">
+          <span class="chip">Node.js 24</span>
+          <span class="chip">SQLite</span>
+          <span class="chip">PWA cài được</span>
+          <span class="chip">13 test end-to-end</span>
+          <span class="chip">MIT</span>
+        </div>
+      </div>
+      <figure class="shot">
+        <img src="docs/screenshots/landing.png" alt="Trang chủ Cùng Làm" loading="lazy">
+        <figcaption>Trang chủ — số liệu lấy trực tiếp từ cơ sở dữ liệu</figcaption>
+      </figure>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>Một vòng đời khép kín</h2><span class="note">Không dừng ở việc “tìm người”.</span></div>
+      <ol class="steps">
+        <li><span class="num">1</span><h3>Khai báo năng lực</h3><p>Phỏng vấn ngắn: kỹ năng, mức độ, thời gian, mục tiêu.</p></li>
+        <li><span class="num">2</span><h3>Tạo hoặc tìm dự án</h3><p>Creator mô tả vấn đề, vai trò còn thiếu; hệ thống gợi ý người phù hợp.</p></li>
+        <li><span class="num">3</span><h3>Workspace chung</h3><p>Task, deadline, trạng thái, vướng mắc hiển thị cho cả team.</p></li>
+        <li><span class="num">4</span><h3>Hoàn thành &amp; ghi nhận</h3><p>Đóng góp được xác nhận, uy tín tích luỹ, dự án vào showcase.</p></li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <div class="grid-2">
+        <figure class="shot">
+          <img src="docs/screenshots/manage.png" alt="Trang quản lý dự án: duyệt ứng viên và gợi ý matching" loading="lazy">
+          <figcaption>Quản lý dự án — duyệt ứng viên, điểm matching kèm lý do, thoả thuận sở hữu</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="docs/screenshots/workspace.png" alt="Workspace: bảng task và tiến độ" loading="lazy">
+          <figcaption>Workspace — bảng task 4 trạng thái, tiến độ từng người, cảnh báo vướng mắc</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="two-col">
+        <div class="card">
+          <h2>Điểm khác biệt</h2>
+          <ul class="list">
+            <li><strong>Số liệu thật:</strong> mọi con số tính từ SQLite, không hardcode.</li>
+            <li><strong>Matching minh bạch:</strong> điểm 0–100 kèm lý do, creator quyết định.</li>
+            <li><strong>Thoả thuận trước khi làm:</strong> tỷ lệ sở hữu, từng người xác nhận.</li>
+            <li><strong>Uy tín từ bằng chứng:</strong> task, dự án, tỷ lệ đúng hạn — không phải sao.</li>
+            <li><strong>Bảo mật theo tầng:</strong> công khai → ứng viên → thành viên.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Chạy bản đầy đủ</h2>
+          <p class="note">Cần Node ≥ 22.5. Không cần cài package nào.</p>
+          <p><code>node server.js</code></p>
+          <p><code>docker compose up -d --build</code></p>
+          <p class="note">Hoặc deploy lên Render theo <a href="https://github.com/ahoangzzz2k9/workspace/blob/main/docs/DEPLOY.md">docs/DEPLOY.md</a>.</p>
+          <a class="btn btn-primary" href="https://github.com/ahoangzzz2k9/workspace/blob/main/docs/DEPLOY.md">Hướng dẫn triển khai</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span><strong>Cùng Làm</strong> — MIT License · Node.js + SQLite + PWA</span>
+      <span>Trang tĩnh cho GitHub Pages · <a href="https://github.com/ahoangzzz2k9/workspace/blob/main/README.md">README</a></span>
+    </div>
+  </footer>
+</body>
+</html>
+
